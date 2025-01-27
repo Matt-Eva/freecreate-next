@@ -1,11 +1,6 @@
-import DeployButton from "@/components/deploy-button";
-import { EnvVarWarning } from "@/components/env-var-warning";
-import HeaderAuth from "@/components/header-auth";
-import { ThemeSwitcher } from "@/components/theme-switcher";
-import { hasEnvVars } from "@/utils/supabase/check-env-vars";
 import { Geist } from "next/font/google";
-import { ThemeProvider } from "next-themes";
-import Link from "next/link";
+import RegisterSW from "./RegisterSW";
+
 import "./globals.css";
 
 const defaultUrl = process.env.VERCEL_URL
@@ -30,7 +25,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={geistSans.className} suppressHydrationWarning>
-      <body className="bg-background text-foreground"></body>
+      <body className="bg-background text-foreground">
+        <RegisterSW />
+        <main>{children}</main>
+      </body>
     </html>
   );
 }
