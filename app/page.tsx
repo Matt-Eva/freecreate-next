@@ -1,9 +1,16 @@
 import Hero from "@/components/hero";
 import ConnectSupabaseSteps from "@/components/tutorial/connect-supabase-steps";
 import SignUpUserSteps from "@/components/tutorial/sign-up-user-steps";
+import connectMongoose from "@/mongo/config";
 import { hasEnvVars } from "@/utils/supabase/check-env-vars";
 
 export default async function Home() {
+  try {
+    await connectMongoose();
+  } catch (e) {
+    console.error(e);
+  }
+
   return (
     <>
       <Hero />
