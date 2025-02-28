@@ -2,26 +2,13 @@
 
 import { useState, useEffect } from "react";
 import { createClient } from "@/utils/supabase/client";
-import Link from "next/link";
+import { useAuth } from "@/context/AuthProvider";
+
 
 export default function Auth() {
-  const [user, setUser] = useState({ pending: true, present: false });
+  const { user, setPending } = useAuth();
 
   const supabase = createClient();
-
-  useEffect(() => {
-    const getUser = async () => {
-      const { data, error } = await supabase.auth.getUser();
-      if (data.user) {
-        setUser({ pending: false, present: true });
-      }
-      if (error) {
-        console.log("error", error);
-        setUser({ present: false, pending: false });
-      }
-    };
-    getUser();
-  }, []);
 
   const googleLogin = async () => {
     const { data, error } = await supabase.auth.signInWithOAuth({
@@ -31,7 +18,7 @@ export default function Auth() {
       },
     });
     console.log("google login", data, error);
-    setUser({ ...user, pending: true });
+    setPending();
   };
 
   const logout = async () => {
@@ -39,7 +26,6 @@ export default function Auth() {
     if (error) {
       console.error(error);
     }
-    setUser({ pending: false, present: false });
   };
 
   const deleteUser = async () => {
@@ -50,7 +36,6 @@ export default function Auth() {
       const error = await res.json();
       console.error(error);
     }
-    setUser({ present: false, pending: false });
   };
 
   if (user.pending) {
@@ -59,7 +44,6 @@ export default function Auth() {
 
   return (
     <>
-      <h1>FreeCreate</h1>
       {user.present ? (
         <>
           <button onClick={logout}>logout</button>
@@ -71,7 +55,6 @@ export default function Auth() {
       )}
 
       <br />
-      <Link href="/test">test</Link>
     </>
   );
 }
