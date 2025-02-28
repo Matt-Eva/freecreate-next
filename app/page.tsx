@@ -24,12 +24,13 @@ export default function Home() {
   }, []);
 
   const googleLogin = async () => {
-    await supabase.auth.signInWithOAuth({
+    const { data, error } = await supabase.auth.signInWithOAuth({
       provider: "google",
       options: {
-        redirectTo: "http://localhost:3000/auth/oauth-callback",
+        redirectTo: "http://localhost:3000/api/auth/oauth-callback",
       },
     });
+    console.log("google login", data, error);
     setUser({ ...user, pending: true });
   };
 
