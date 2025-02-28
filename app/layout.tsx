@@ -1,5 +1,6 @@
 import { Geist } from "next/font/google";
 import RegisterSW from "./RegisterSW";
+import { Providers } from "@/context/ContextProvider";
 
 import "./globals.css";
 
@@ -27,7 +28,7 @@ export default function RootLayout({
     <html lang="en" className={geistSans.className} suppressHydrationWarning>
       <body className="bg-background text-foreground">
         <RegisterSW />
-        <main>{children}</main>
+        <Providers>{children}</Providers>
       </body>
     </html>
   );
