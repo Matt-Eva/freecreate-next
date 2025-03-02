@@ -29,18 +29,18 @@ export default function Home() {
         <h1 className="text-xl sm:text-3xl font-bold  align-bottom">
           FreeCreate
         </h1>
-        <Link href="/" className="  ml-1.5 sm:ml-6 mt-1.5 hover:text-amber-600">
+        <Link href="/" className="  ml-1.5 sm:ml-6 mt-1.5 hover:text-amber-500">
           About
         </Link>
-        <Link href="/" className="  ml-1.5 sm:ml-6 mt-1.5 hover:text-amber-600">
+        <Link href="/" className="  ml-1.5 sm:ml-6 mt-1.5 hover:text-amber-500">
           Donate
         </Link>
-        <Link href="/" className="  ml-1.5 sm:ml-6 mt-1.5 hover:text-amber-600">
+        <Link href="/" className="  ml-1.5 sm:ml-6 mt-1.5 hover:text-amber-500">
           App
         </Link>
         <Link
           href="/"
-          className="justify-self-end ml-auto mr-1 sm:mr-2   mt-1.5 hover:text-amber-600"
+          className="justify-self-end ml-auto mr-1 sm:mr-2   mt-1.5 hover:text-amber-500"
         >
           Profile
         </Link>
