@@ -18,7 +18,7 @@ export default function Home() {
       <header className="w-full flex items-center">
         <Sheet>
           <SheetTrigger>
-            <AlignJustify className="mr-1 ml-1  sm:mr-2 sm:ml-2 sm:w-8 sm:h-8" />
+            <AlignJustify className="mr-1 ml-1 mb-0.5 sm:mr-2 sm:ml-2 sm:w-8 sm:h-8" />
           </SheetTrigger>
           <SheetContent side="left">
             <SheetHeader>
