@@ -2,6 +2,8 @@ import { Geist } from "next/font/google";
 import RegisterSW from "./RegisterSW";
 import { Providers } from "@/context/ContextProvider";
 
+import Header from "./components/Header";
+
 import "./globals.css";
 
 const defaultUrl = process.env.VERCEL_URL
@@ -27,6 +29,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={geistSans.className} suppressHydrationWarning>
       <body className="bg-background text-foreground">
+        <Header />
         <RegisterSW />
         <Providers>{children}</Providers>
       </body>
