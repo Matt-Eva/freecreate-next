@@ -45,25 +45,26 @@ function Header() {
       </h1>
       <Link
         href="/about"
-        className=" text-sm sm:text-base ml-2 sm:ml-6 mt-0.5 sm:mt-1.5 "
+        id="about"
+        className=" text-sm sm:text-base ml-2 sm:ml-6 mt-0.5 sm:mt-1.5 hover:underline"
       >
         About
       </Link>
       <Link
-        href="/"
-        className=" text-sm sm:text-base ml-2 sm:ml-6 mt-0.5 sm:mt-1.5 "
+        href="/donate"
+        className=" text-sm sm:text-base ml-2 sm:ml-6 mt-0.5 sm:mt-1.5 hover:underline"
       >
         Donate
       </Link>
       <Link
-        href="/"
-        className=" text-sm sm:text-base ml-2 sm:ml-6 mt-0.5 sm:mt-1.5 "
+        href="/app"
+        className=" text-sm sm:text-base ml-2 sm:ml-6 mt-0.5 sm:mt-1.5 hover:underline"
       >
         App
       </Link>
       <Link
-        href="/"
-        className="justify-self-end text-sm sm:text-base ml-auto mr-1 sm:mr-2 mt-0.5 sm:mt-1.5"
+        href="/profile"
+        className="justify-self-end text-sm sm:text-base ml-auto mr-1 mt-0.5 sm:mr-2 sm:mt-1.5 hover:underline"
       >
         Profile
       </Link>
