@@ -29,36 +29,23 @@ export default function Home() {
         <h1 className="text-xl sm:text-3xl font-bold  align-bottom">
           FreeCreate
         </h1>
-        <Link href="/" className="  ml-1.5 sm:ml-6 mt-1.5 ">
+        <Link href="/" className="  ml-1.5 sm:ml-6 mt-0.5 sm:mt-1.5 ">
           About
         </Link>
-        <Link href="/" className="  ml-1.5 sm:ml-6 mt-1.5 ">
+        <Link href="/" className="  ml-1.5 sm:ml-6 mt-0.5 sm:mt-1.5 ">
           Donate
         </Link>
-        <Link href="/" className="  ml-1.5 sm:ml-6 mt-1.5 ">
+        <Link href="/" className="  ml-1.5 sm:ml-6 mt-0.5 sm:mt-1.5 ">
           App
         </Link>
         <Link
           href="/"
-          className="justify-self-end ml-auto mr-1 sm:mr-2   mt-1.5 "
+          className="justify-self-end ml-auto mr-1 sm:mr-2 mt-0.5 sm:mt-1.5"
         >
           Profile
         </Link>
       </header>
       <main>
-        <Sheet>
-          <SheetTrigger>Open</SheetTrigger>
-          <SheetContent>
-            <SheetHeader>
-              <SheetTitle>Are you absolutely sure?</SheetTitle>
-              <SheetDescription>
-                This action cannot be undone. This will permanently delete your
-                account and remove your data from our servers.
-              </SheetDescription>
-            </SheetHeader>
-          </SheetContent>
-        </Sheet>
-
         {/* <Auth />
         <Link href="/test">test</Link> */}
       </main>
