@@ -3,10 +3,7 @@ import Auth from "./auth";
 export default function Home() {
   return (
     <>
-      <main>
-        {/* <Auth />
-        <Link href="/test">test</Link> */}
-      </main>
+      <h2>Main content</h2>
     </>
   );
 }

@@ -4,6 +4,7 @@ import { Providers } from "@/context/ContextProvider";
 
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import Sidebar from "./components/Sidebar";
 
 import "./globals.css";
 
@@ -13,7 +14,7 @@ const defaultUrl = process.env.VERCEL_URL
 
 export const metadata = {
   metadataBase: new URL(defaultUrl),
-  title: "Next.js and Supabase Starter Kit",
+  title: "freecreate",
   description: "The fastest way to build apps with Next.js and Supabase",
 };
 
@@ -28,12 +29,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={geistSans.className} suppressHydrationWarning>
-      <body className="bg-background text-foreground">
-        <Header />
+    <html
+      lang="en"
+      className={`${geistSans.className} h-full bg-stone-200`}
+      suppressHydrationWarning
+    >
+      <body className="bg-stone-200 text-foreground h-full">
         <RegisterSW />
-        <Providers>{children}</Providers>
-        <Footer />
+        <Providers>
+          <Header />
+          <Sidebar />
+          <main className="sm:ml-48 h-[calc(100%-55px)] ">{children}</main>
+          <Footer />
+        </Providers>
       </body>
     </html>
   );
