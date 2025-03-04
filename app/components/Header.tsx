@@ -9,9 +9,9 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 
-import { AlignJustify } from "lucide-react";
 import { SidebarTrigger } from "@/components/ui/sidebar";
 import FullScreenButton from "./FullScreenButton";
+import { AlignJustify, CircleUserRound } from "lucide-react";
 
 function Header() {
   return (
@@ -45,34 +45,37 @@ function Header() {
           </ul>
         </SheetContent>
       </Sheet>
-      <h1 className="text-xl ml-1 sm:ml-2 sm:text-2xl font-bold  align-bottom text-muted-foreground hover:text-black transition ease-in-out duration-500">
+      <h1 className=" mt-0.5 ml-1 sm:ml-2 sm:text-2xl font-bold  align-bottom text-muted-foreground hover:text-black transition ease-in-out duration-500">
         <Link href="/">FreeCreate</Link>
       </h1>
       <Link
         href="/about"
         id="about"
-        className=" text-sm sm:text-base ml-2 sm:ml-6 mt-0.5 sm:mt-1.5 hover:underline text-muted-foreground transition ease-in-out duration-500 hover:text-black"
+        className="underline text-sm sm:text-base ml-1 sm:ml-6 mt-0.5 sm:mt-1.5  text-muted-foreground transition ease-in-out duration-500 hover:text-black"
       >
-        About
+        about
       </Link>
       <Link
         href="/donate"
-        className=" text-sm sm:text-base ml-2 sm:ml-6 mt-0.5 sm:mt-1.5 hover:underline text-muted-foreground transition ease-in-out duration-500 hover:text-black"
+        className="underline  text-sm sm:text-base ml-1 sm:ml-6 mt-0.5 sm:mt-1.5  text-muted-foreground transition ease-in-out duration-500 hover:text-black"
       >
-        Donate
+        donate
       </Link>
       <Link
         href="/app"
-        className=" text-sm sm:text-base ml-2 sm:ml-6 mt-0.5 sm:mt-1.5 hover:underline text-muted-foreground transition ease-in-out duration-500 hover:text-black"
+        className="underline  text-sm sm:text-base ml-1 sm:ml-6 mt-0.5 sm:mt-1.5  text-muted-foreground transition ease-in-out duration-500 hover:text-black"
       >
-        App
+        app
       </Link>
       <FullScreenButton />
       <Link
         href="/profile"
-        className="justify-self-end text-sm sm:text-base ml-auto mr-1 mt-0.5 sm:mr-2 sm:mt-1.5 hover:text-underline text-muted-foreground transition ease-in-out duration-500 hover:text-black"
+        className=" underline justify-self-end text-sm sm:text-base ml-auto mr-1 mt-0.5 sm:mr-2 sm:mt-1.5 hover:text-underline text-muted-foreground transition ease-in-out duration-500 hover:text-black"
       >
-        Profile
+        <CircleUserRound
+          className="text-muted-foreground hover:text-black transition ease-in-out duration-500"
+          strokeWidth={1.5}
+        />
       </Link>
     </header>
   );
