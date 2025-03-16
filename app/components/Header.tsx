@@ -1,4 +1,6 @@
 import Link from "next/link";
+import FullScreenButton from "./FullScreenButton";
+import ProfileIcon from "./ProfileIcon";
 
 import {
   Sheet,
@@ -8,10 +10,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-
-import { SidebarTrigger } from "@/components/ui/sidebar";
-import FullScreenButton from "./FullScreenButton";
-import { AlignJustify, CircleUserRound } from "lucide-react";
+import { AlignJustify } from "lucide-react";
 
 function Header() {
   return (
@@ -68,15 +67,7 @@ function Header() {
         app
       </Link>
       <FullScreenButton />
-      <Link
-        href="/profile"
-        className=" underline justify-self-end text-sm sm:text-base ml-auto mr-1 mt-0.5 sm:mr-2 sm:mt-1.5 hover:text-underline text-muted-foreground transition ease-in-out duration-500 hover:text-black"
-      >
-        <CircleUserRound
-          className="text-muted-foreground hover:text-black transition ease-in-out duration-500"
-          strokeWidth={1.5}
-        />
-      </Link>
+      <ProfileIcon />
     </header>
   );
 }
