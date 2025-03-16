@@ -31,7 +31,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.className} h-full bg-stone-200`}
+      className={`${geistSans.className} h-full bg-stone-200 font-light`}
       suppressHydrationWarning
     >
       <body className="bg-stone-200 text-foreground h-full">

@@ -9,6 +9,9 @@ type AuthContextType = {
     present: boolean;
   };
   setPending: Function;
+  googleLogin: Function;
+  logout: Function;
+  deleteUser: Function;
 };
 
 const initialContext: AuthContextType | null = {
@@ -17,6 +20,9 @@ const initialContext: AuthContextType | null = {
     present: false,
   },
   setPending: () => {},
+  googleLogin: () => {},
+  logout: () => {},
+  deleteUser: () => {},
 };
 
 const AuthContext = createContext<AuthContextType>(initialContext);
@@ -48,8 +54,39 @@ export function AuthProvider(props: React.PropsWithChildren) {
     setUser({ ...user, pending: true });
   };
 
+  const googleLogin = async () => {
+    const domainURL = process.env.NEXT_PUBLIC_DOMAIN_URL;
+    const { data, error } = await supabase.auth.signInWithOAuth({
+      provider: "google",
+      options: {
+        redirectTo: `${domainURL}/api/auth/oauth-callback`,
+      },
+    });
+    console.log("google login", data, error);
+    // setPending();
+  };
+
+  const logout = async () => {
+    const { error } = await supabase.auth.signOut();
+    if (error) {
+      console.error(error);
+    }
+  };
+
+  const deleteUser = async () => {
+    const res = await fetch("/api/delete-user", { method: "DELETE" });
+    if (res.ok) {
+      console.log("user deleted");
+    } else {
+      const error = await res.json();
+      console.error(error);
+    }
+  };
+
   return (
-    <AuthContext.Provider value={{ user, setPending }}>
+    <AuthContext.Provider
+      value={{ user, setPending, googleLogin, logout, deleteUser }}
+    >
       {props.children}
     </AuthContext.Provider>
   );
