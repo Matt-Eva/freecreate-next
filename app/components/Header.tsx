@@ -19,7 +19,7 @@ function Header() {
         <SheetTrigger>
           <AlignJustify
             strokeWidth={1}
-            className=" text-muted-foreground hover:text-black hover:cursor-pointer transition ease-in-out duration-500 ml-1 sm:mb-0.5 sm:mr-3 sm:ml-3 sm:w-8 sm:h-8"
+            className="  hover:text-black hover:cursor-pointer transition ease-in-out duration-500 ml-1 sm:mb-0.5 sm:mr-3 sm:ml-3 sm:w-8 sm:h-8"
           />
         </SheetTrigger>
         <SheetContent side="left">
@@ -29,7 +29,7 @@ function Header() {
               Select what type of content you're interested in.
             </SheetDescription>
           </SheetHeader>
-          <ul className="text-muted-foreground">
+          <ul className="">
             <li>Fiction</li>
             <li>Poetry</li>
             <li>Essays</li>
@@ -44,25 +44,25 @@ function Header() {
           </ul>
         </SheetContent>
       </Sheet>
-      <h1 className=" mt-0.5 ml-1 sm:ml-2 sm:text-2xl font-bold  align-bottom text-muted-foreground hover:text-black transition ease-in-out duration-500">
+      <h1 className=" mt-0.5 ml-1 sm:ml-2 sm:text-2xl font-bold  align-bottom  hover:text-black transition ease-in-out duration-500">
         <Link href="/">FreeCreate</Link>
       </h1>
       <Link
         href="/about"
         id="about"
-        className="underline text-sm sm:text-base ml-1 sm:ml-6 mt-0.5 sm:mt-1.5  text-muted-foreground transition ease-in-out duration-500 hover:text-black"
+        className="underline text-sm sm:text-base ml-1 sm:ml-6 mt-0.5 sm:mt-1.5   transition ease-in-out duration-500 hover:text-black"
       >
         about
       </Link>
       <Link
         href="/donate"
-        className="underline  text-sm sm:text-base ml-1 sm:ml-6 mt-0.5 sm:mt-1.5  text-muted-foreground transition ease-in-out duration-500 hover:text-black"
+        className="underline  text-sm sm:text-base ml-1 sm:ml-6 mt-0.5 sm:mt-1.5   transition ease-in-out duration-500 hover:text-black"
       >
         donate
       </Link>
       <Link
         href="/app"
-        className="underline  text-sm sm:text-base ml-1 sm:ml-6 mt-0.5 sm:mt-1.5  text-muted-foreground transition ease-in-out duration-500 hover:text-black"
+        className="underline  text-sm sm:text-base ml-1 sm:ml-6 mt-0.5 sm:mt-1.5   transition ease-in-out duration-500 hover:text-black"
       >
         app
       </Link>

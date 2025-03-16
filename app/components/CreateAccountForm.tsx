@@ -41,7 +41,14 @@ function CreateAccountForm() {
       <FormField
         control={form.control}
         name="email"
-        render={({ field }) => <FormItem></FormItem>}
+        render={({ field }) => (
+          <FormItem>
+            <FormLabel>email</FormLabel>
+            <FormControl>
+              <Input placeholder="email" {...field} />
+            </FormControl>
+          </FormItem>
+        )}
       />
     </Form>
   );

@@ -21,16 +21,26 @@ function LoginForm() {
     email: z.string().min(2, {
       message: "Username must be at least 2 characters.",
     }),
+    password: z.string().min(8, {
+      message: "password must be at least 8 characters",
+    }),
   });
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       email: "",
+      password: "",
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
+  function passwordSubmit(values: z.infer<typeof formSchema>) {
+    // Do something with the form values.
+    // ✅ This will be type-safe and validated.
+    console.log(values);
+  }
+
+  function emailSubmit(values: z.infer<typeof formSchema>) {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
     console.log(values);
@@ -45,11 +55,26 @@ function LoginForm() {
           <FormItem>
             <FormLabel>email</FormLabel>
             <FormControl>
-              <Input placeholder="email" {...field} />
+              <Input placeholder="enter email" {...field} />
             </FormControl>
           </FormItem>
         )}
       />
+      <FormField
+        control={form.control}
+        name="password"
+        render={({ field }) => (
+          <FormItem>
+            <FormLabel>password</FormLabel>
+            <FormControl>
+              <Input placeholder="enter password" {...field} />
+            </FormControl>
+          </FormItem>
+        )}
+      />
+      <Button>Login with password</Button>
+      <Button>Login with email</Button>
+      <Button>Login with Google</Button>
     </Form>
   );
 }
