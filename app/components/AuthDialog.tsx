@@ -28,9 +28,8 @@ function AuthDialog() {
       <DialogContent>
         <DialogHeader>
           <DialogTitle>{login ? "Login" : "Create Account"}</DialogTitle>
-          <DialogDescription>
-            {login ? <LoginForm /> : <CreateAccountForm />}
-          </DialogDescription>
+          <DialogDescription></DialogDescription>
+          {login ? <LoginForm /> : <CreateAccountForm />}
         </DialogHeader>
       </DialogContent>
     </Dialog>
