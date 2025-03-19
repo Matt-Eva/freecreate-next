@@ -3,6 +3,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+import { useAuth } from "@/context/AuthProvider";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -17,6 +18,7 @@ import {
 import { Input } from "@/components/ui/input";
 
 function CreateAccountForm({ toggleLogin }: { toggleLogin: Function }) {
+  const { googleLogin } = useAuth();
   const formSchema = z.object({
     email: z.string().min(2, {
       message: "Username must be at least 2 characters.",
@@ -84,7 +86,7 @@ function CreateAccountForm({ toggleLogin }: { toggleLogin: Function }) {
       />
       <Button>Sign up with email and password</Button>
       <Button>Sign up with email</Button>
-      <Button>Sign up with Google</Button>
+      <Button onClick={() => googleLogin()}>Sign up with Google</Button>
       <Button
         className="bg-white text-black underline hover:bg-white hover:cursor-pointer shadow-none"
         onClick={() => toggleLogin()}

@@ -27,12 +27,17 @@ function AuthDialog(props: React.PropsWithChildren) {
 
   return (
     <Dialog>
-      <DialogTrigger className="justify-self-end text-sm sm:text-base ml-auto mr-1 mt-0.5 sm:mr-2 sm:mt-1.5 hover:text-underline transition ease-in-out duration-500 hover:text-black">
+      <DialogTrigger
+        asChild
+        className="justify-self-end sm:text-base ml-auto mr-1 mt-0.5 sm:mr-2 sm:mt-1.5 hover:cursor-pointer"
+      >
         {props.children}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>{login ? "Login" : "Create Account"}</DialogTitle>
+          <DialogTitle className="text-centerd">
+            {login ? "Login" : "Create Account"}
+          </DialogTitle>
           <DialogDescription></DialogDescription>
           {login ? (
             <LoginForm toggleCreateAccount={toggleCreateAccount} />

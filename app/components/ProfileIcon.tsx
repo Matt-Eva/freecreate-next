@@ -2,7 +2,9 @@
 
 import Link from "next/link";
 import { useAuth } from "@/context/AuthProvider";
+
 import AuthDialog from "./AuthDialog";
+import { Button } from "@/components/ui/button";
 import { CircleUserRound } from "lucide-react";
 
 function ProfileIcon() {
@@ -21,10 +23,13 @@ function ProfileIcon() {
         </Link>
       ) : (
         <AuthDialog>
-          <CircleUserRound
+          {/* <CircleUserRound
             className="hover:text-black transition ease-in-out duration-500"
             strokeWidth={1.5}
-          />
+          /> */}
+          <Button variant="ghost" className="font-light underline">
+            login
+          </Button>
         </AuthDialog>
       )}
     </>

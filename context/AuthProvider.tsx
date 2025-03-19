@@ -2,16 +2,24 @@
 
 import { createContext, useContext, useEffect, useState } from "react";
 import { createClient } from "@/utils/supabase/client";
+import { useRouter } from "next/navigation";
+
+type User = {
+  pending: boolean;
+  present: boolean;
+};
 
 type AuthContextType = {
-  user: {
-    pending: boolean;
-    present: boolean;
-  };
+  user: User;
   setPending: Function;
   googleLogin: Function;
   logout: Function;
   deleteUser: Function;
+};
+
+const initialUser = {
+  pending: true,
+  present: false,
 };
 
 const initialContext: AuthContextType | null = {
@@ -28,10 +36,9 @@ const initialContext: AuthContextType | null = {
 const AuthContext = createContext<AuthContextType>(initialContext);
 
 export function AuthProvider(props: React.PropsWithChildren) {
-  const [user, setUser] = useState({
-    pending: true,
-    present: false,
-  });
+  const [user, setUser] = useState(initialUser);
+
+  const router = useRouter();
 
   const supabase = createClient();
 
@@ -70,6 +77,9 @@ export function AuthProvider(props: React.PropsWithChildren) {
     const { error } = await supabase.auth.signOut();
     if (error) {
       console.error(error);
+    } else {
+      setUser(initialUser);
+      router.push("/");
     }
   };
 
@@ -77,6 +87,8 @@ export function AuthProvider(props: React.PropsWithChildren) {
     const res = await fetch("/api/delete-user", { method: "DELETE" });
     if (res.ok) {
       console.log("user deleted");
+      setUser(initialUser);
+      router.push("/");
     } else {
       const error = await res.json();
       console.error(error);
