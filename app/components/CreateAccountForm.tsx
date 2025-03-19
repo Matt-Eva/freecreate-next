@@ -16,10 +16,16 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 
-function CreateAccountForm() {
+function CreateAccountForm({ toggleLogin }: { toggleLogin: Function }) {
   const formSchema = z.object({
     email: z.string().min(2, {
       message: "Username must be at least 2 characters.",
+    }),
+    password: z.string().min(8, {
+      message: "Password must be at least 8 characters",
+    }),
+    passwordConfirmation: z.string().min(8, {
+      message: "Password confirmation must be at least 8 characters",
     }),
   });
 
@@ -27,6 +33,8 @@ function CreateAccountForm() {
     resolver: zodResolver(formSchema),
     defaultValues: {
       email: "",
+      password: "",
+      passwordConfirmation: "",
     },
   });
 
@@ -50,6 +58,39 @@ function CreateAccountForm() {
           </FormItem>
         )}
       />
+      <FormField
+        control={form.control}
+        name="password"
+        render={({ field }) => (
+          <FormItem>
+            <FormLabel>password</FormLabel>
+            <FormControl>
+              <Input placeholder="enter password" {...field} />
+            </FormControl>
+          </FormItem>
+        )}
+      />
+      <FormField
+        control={form.control}
+        name="passwordConfirmation"
+        render={({ field }) => (
+          <FormItem>
+            <FormLabel>confirm password</FormLabel>
+            <FormControl>
+              <Input placeholder="enter password" {...field} />
+            </FormControl>
+          </FormItem>
+        )}
+      />
+      <Button>Sign up with email and password</Button>
+      <Button>Sign up with email</Button>
+      <Button>Sign up with Google</Button>
+      <Button
+        className="bg-white text-black underline hover:bg-white hover:cursor-pointer shadow-none"
+        onClick={() => toggleLogin()}
+      >
+        Already have an account? Login.
+      </Button>
     </Form>
   );
 }

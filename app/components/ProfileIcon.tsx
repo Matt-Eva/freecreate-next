@@ -20,7 +20,12 @@ function ProfileIcon() {
           />
         </Link>
       ) : (
-        <AuthDialog />
+        <AuthDialog>
+          <CircleUserRound
+            className="hover:text-black transition ease-in-out duration-500"
+            strokeWidth={1.5}
+          />
+        </AuthDialog>
       )}
     </>
   );
