@@ -17,13 +17,18 @@ function Login() {
   };
 
   return (
-    <>
-      {isLogin ? (
-        <LoginForm toggleCreateAccount={toggleCreateAccount} />
-      ) : (
-        <CreateAccountForm toggleLogin={toggleLogin} />
-      )}
-    </>
+    <div className="w-[100%] flex justify-center p-4">
+      <div className="">
+        <h2 className="text-center font-bold underline mb-4 sm:text-2xl">
+          Login
+        </h2>
+        {isLogin ? (
+          <LoginForm toggleCreateAccount={toggleCreateAccount} />
+        ) : (
+          <CreateAccountForm toggleLogin={toggleLogin} />
+        )}
+      </div>
+    </div>
   );
 }
 

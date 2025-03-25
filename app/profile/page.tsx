@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 
 import { useAuth } from "@/context/AuthProvider";
@@ -11,12 +12,14 @@ function Profile() {
 
   const router = useRouter();
 
-  if (user.pending) {
-    return <div>loading</div>;
-  }
+  useEffect(() => {
+    if (!user.present) {
+      router.push("/login");
+    }
+  }, []);
 
-  if (!user.present) {
-    router.push("/login");
+  if (user.pending || !user.present) {
+    return <div>loading</div>;
   }
 
   return (

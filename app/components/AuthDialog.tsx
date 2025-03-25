@@ -35,7 +35,7 @@ function AuthDialog(props: React.PropsWithChildren) {
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle className="text-center">
+          <DialogTitle className="text-center underline mb-4">
             {login ? "Login" : "Create Account"}
           </DialogTitle>
           <DialogDescription></DialogDescription>
