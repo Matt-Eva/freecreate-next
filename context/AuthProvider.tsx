@@ -11,7 +11,6 @@ type User = {
 
 type AuthContextType = {
   user: User;
-  setPending: Function;
   googleLogin: Function;
   logout: Function;
   deleteUser: Function;
@@ -27,7 +26,6 @@ const initialContext: AuthContextType | null = {
     pending: true,
     present: false,
   },
-  setPending: () => {},
   googleLogin: () => {},
   logout: () => {},
   deleteUser: () => {},
@@ -57,10 +55,6 @@ export function AuthProvider(props: React.PropsWithChildren) {
     getUser();
   }, []);
 
-  const setPending = () => {
-    setUser({ ...user, pending: true });
-  };
-
   const googleLogin = async () => {
     const domainURL = process.env.NEXT_PUBLIC_DOMAIN_URL;
     const { data, error } = await supabase.auth.signInWithOAuth({
@@ -70,7 +64,6 @@ export function AuthProvider(props: React.PropsWithChildren) {
       },
     });
     console.log("google login", data, error);
-    // setPending();
   };
 
   const logout = async () => {
@@ -96,9 +89,7 @@ export function AuthProvider(props: React.PropsWithChildren) {
   };
 
   return (
-    <AuthContext.Provider
-      value={{ user, setPending, googleLogin, logout, deleteUser }}
-    >
+    <AuthContext.Provider value={{ user, googleLogin, logout, deleteUser }}>
       {props.children}
     </AuthContext.Provider>
   );
