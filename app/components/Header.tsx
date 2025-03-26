@@ -14,7 +14,7 @@ import { AlignJustify } from "lucide-react";
 
 function Header() {
   return (
-    <header className="w-screen flex items-center h-[40px] sm:h-[45px] mb-[10px]">
+    <header className="fixed top-0 z-10 bg-white w-screen flex items-center h-[40px] sm:h-[45px] mb-[10px]">
       <Sheet>
         <SheetTrigger>
           <AlignJustify

@@ -32,12 +32,13 @@ function AuthDialog(props: React.PropsWithChildren) {
       >
         {props.children}
       </DialogTrigger>
-      <DialogContent>
+      <DialogContent className="max-h-[90vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle className="text-center underline mb-4">
             {login ? "Login" : "Create Account"}
           </DialogTitle>
           <DialogDescription></DialogDescription>
+
           {login ? (
             <LoginForm toggleCreateAccount={toggleCreateAccount} />
           ) : (

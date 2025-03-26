@@ -34,12 +34,14 @@ export default function RootLayout({
       className={`${geistSans.className} bg-white h-full  font-light`}
       suppressHydrationWarning
     >
-      <body className=" text-foreground h-full">
+      <body className=" text-foreground h-[calc(100%-55px)]">
         <RegisterSW />
         <Providers>
           <Header />
           <Sidebar />
-          <main className="sm:ml-48 h-[calc(100%-55px)] ">{children}</main>
+          <main className="mt-[55px] sm:ml-48 h-[calc(100%-55px)] ">
+            {children}
+          </main>
           <Footer />
         </Providers>
       </body>
