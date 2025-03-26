@@ -17,7 +17,7 @@ function LoginForm({ toggleCreateAccount }: { toggleCreateAccount: Function }) {
         <OauthLoginForm />
       </div>
       <Button
-        className="block justify-self-center  bg-white text-black underline hover:bg-white hover:cursor-pointer shadow-none"
+        className="block justify-self-center  bg-white text-black underline hover:bg-white hover:cursor-pointer shadow-none max-w-[90%]"
         onClick={() => toggleCreateAccount()}
       >
         New to FreeCreate? Create an account.

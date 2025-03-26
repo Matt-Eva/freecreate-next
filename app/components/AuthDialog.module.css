@@ -1,0 +1,6 @@
+.dialogHeight {
+  height: 90%;
+}
+
+@media (min-height: 600px) {
+}
