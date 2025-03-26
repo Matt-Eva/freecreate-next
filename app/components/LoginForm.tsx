@@ -12,7 +12,7 @@ function LoginForm({ toggleCreateAccount }: { toggleCreateAccount: Function }) {
         <PasswordLoginForm />
         <EmailLoginForm />
         <p className="text-sm text-muted-foreground justify-self-start text-left mb-2">
-          Login with Social Account.
+          Login with a social account.
         </p>
         <OauthLoginForm />
       </div>
