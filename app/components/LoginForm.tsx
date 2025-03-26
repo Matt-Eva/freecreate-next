@@ -7,8 +7,8 @@ import EmailLoginForm from "./EmailLoginForm";
 
 function LoginForm({ toggleCreateAccount }: { toggleCreateAccount: Function }) {
   return (
-    <>
-      <div className="h-fit max-h-[60vh] overflow-y-auto">
+    <div>
+      <div className="">
         <PasswordLoginForm />
         <EmailLoginForm />
         <p className="text-sm text-muted-foreground justify-self-start text-left mb-2">
@@ -17,12 +17,12 @@ function LoginForm({ toggleCreateAccount }: { toggleCreateAccount: Function }) {
         <OauthLoginForm />
       </div>
       <Button
-        className="block justify-self-center  bg-white text-black underline hover:bg-white hover:cursor-pointer shadow-none max-w-[90%]"
+        className="block justify-self-center bg-white text-black underline hover:bg-white hover:cursor-pointer shadow-none mt-3"
         onClick={() => toggleCreateAccount()}
       >
         New to FreeCreate? Create an account.
       </Button>
-    </>
+    </div>
   );
 }
 
