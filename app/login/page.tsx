@@ -17,10 +17,10 @@ function Login() {
   };
 
   return (
-    <div className="w-[100%] flex justify-center p-4">
-      <div className="">
+    <div className=" flex justify-center p-4">
+      <div className="w-[400px] max-w-[100%] pl-2 sm:pl-0">
         <h2 className="text-center font-bold underline mb-4 sm:text-2xl">
-          Login
+          {isLogin ? "Login" : "Create Account"}
         </h2>
         {isLogin ? (
           <LoginForm toggleCreateAccount={toggleCreateAccount} />

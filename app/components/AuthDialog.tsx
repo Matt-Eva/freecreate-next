@@ -12,7 +12,6 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { CircleUserRound } from "lucide-react";
 
 function AuthDialog(props: React.PropsWithChildren) {
   const [login, setLogin] = useState(true);
