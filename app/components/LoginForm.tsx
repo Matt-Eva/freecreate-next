@@ -8,14 +8,16 @@ import EmailLoginForm from "./EmailLoginForm";
 function LoginForm({ toggleCreateAccount }: { toggleCreateAccount: Function }) {
   return (
     <>
-      <PasswordLoginForm />
-      <EmailLoginForm />
-      <p className="text-sm text-muted-foreground justify-self-start text-left mb-2">
-        Login with Social Account.
-      </p>
-      <OauthLoginForm />
+      <div className="h-fit max-h-[60vh] overflow-y-auto">
+        <PasswordLoginForm />
+        <EmailLoginForm />
+        <p className="text-sm text-muted-foreground justify-self-start text-left mb-2">
+          Login with Social Account.
+        </p>
+        <OauthLoginForm />
+      </div>
       <Button
-        className="block justify-self-center mt-4  bg-white text-black underline hover:bg-white hover:cursor-pointer shadow-none"
+        className="block justify-self-center  bg-white text-black underline hover:bg-white hover:cursor-pointer shadow-none"
         onClick={() => toggleCreateAccount()}
       >
         New to FreeCreate? Create an account.
