@@ -43,7 +43,7 @@ function EmailCreateAccountForm() {
     <Form {...form}>
       <form className="space-y-2 mb-8">
         <FormDescription className="justify-self-start">
-          Create a new account with an email magic link.
+          Create an account with an email magic link.
         </FormDescription>
         <FormField
           control={form.control}

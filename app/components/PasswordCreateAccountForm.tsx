@@ -49,7 +49,7 @@ function PasswordCreateAccountForm() {
     <Form {...form}>
       <form className="space-y-2 mb-8">
         <FormDescription className="justify-self-start">
-          Create a new account with email and password.
+          Create an account with email and password.
         </FormDescription>
         <FormField
           control={form.control}

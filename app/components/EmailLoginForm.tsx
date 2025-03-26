@@ -46,7 +46,7 @@ function EmailLoginForm() {
             </FormItem>
           )}
         />
-        <Button className="block justify-self-center m-1 w-50">
+        <Button className="block justify-self-center w-50">
           Login with email link
         </Button>
       </form>
