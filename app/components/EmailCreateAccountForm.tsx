@@ -52,7 +52,7 @@ function EmailCreateAccountForm() {
             <FormItem>
               <FormLabel>email</FormLabel>
               <FormControl>
-                <Input placeholder="email" {...field} />
+                <Input placeholder="email" {...field} className="text-sm" />
               </FormControl>
             </FormItem>
           )}
@@ -64,7 +64,7 @@ function EmailCreateAccountForm() {
             <FormItem>
               <FormLabel>username</FormLabel>
               <FormControl>
-                <Input placeholder="username" {...field} />
+                <Input placeholder="username" {...field} className="text-sm" />
               </FormControl>
             </FormItem>
           )}

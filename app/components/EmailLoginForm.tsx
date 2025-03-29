@@ -41,7 +41,11 @@ function EmailLoginForm() {
             <FormItem>
               <FormLabel>email</FormLabel>
               <FormControl>
-                <Input placeholder="enter email" {...field} />
+                <Input
+                  placeholder="enter email"
+                  {...field}
+                  className="text-sm"
+                />
               </FormControl>
             </FormItem>
           )}

@@ -58,7 +58,7 @@ function PasswordCreateAccountForm() {
             <FormItem>
               <FormLabel>email</FormLabel>
               <FormControl>
-                <Input placeholder="email" {...field} />
+                <Input placeholder="email" {...field} className="text-sm" />
               </FormControl>
             </FormItem>
           )}
@@ -70,7 +70,7 @@ function PasswordCreateAccountForm() {
             <FormItem>
               <FormLabel>username</FormLabel>
               <FormControl>
-                <Input placeholder="username" {...field} />
+                <Input placeholder="username" {...field} className="text-sm" />
               </FormControl>
             </FormItem>
           )}
@@ -82,7 +82,11 @@ function PasswordCreateAccountForm() {
             <FormItem>
               <FormLabel>password</FormLabel>
               <FormControl>
-                <Input placeholder="enter password" {...field} />
+                <Input
+                  placeholder="enter password"
+                  {...field}
+                  className="text-sm"
+                />
               </FormControl>
             </FormItem>
           )}
@@ -94,7 +98,11 @@ function PasswordCreateAccountForm() {
             <FormItem>
               <FormLabel>confirm password</FormLabel>
               <FormControl>
-                <Input placeholder="confirm password" {...field} />
+                <Input
+                  placeholder="confirm password"
+                  {...field}
+                  className="text-sm"
+                />
               </FormControl>
             </FormItem>
           )}

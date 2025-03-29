@@ -45,7 +45,11 @@ function PasswordLoginForm() {
             <FormItem>
               <FormLabel>email</FormLabel>
               <FormControl>
-                <Input placeholder="enter email" {...field} />
+                <Input
+                  placeholder="enter email"
+                  {...field}
+                  className="text-sm"
+                />
               </FormControl>
             </FormItem>
           )}
@@ -57,7 +61,11 @@ function PasswordLoginForm() {
             <FormItem>
               <FormLabel>password</FormLabel>
               <FormControl>
-                <Input placeholder="enter password" {...field} />
+                <Input
+                  placeholder="enter password"
+                  {...field}
+                  className="text-sm"
+                />
               </FormControl>
             </FormItem>
           )}
