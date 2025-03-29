@@ -1,14 +1,17 @@
 "use client";
 
+import Link from "next/link";
 import OauthLoginForm from "./OauthLoginForm";
 import PasswordLoginForm from "./PasswordLoginForm";
 import EmailLoginForm from "./EmailLoginForm";
 import { Button } from "@/components/ui/button";
 
+import styles from "./LoginForm.module.css";
+
 function LoginForm({ toggleCreateAccount }: { toggleCreateAccount: Function }) {
   return (
-    <div>
-      <div className="max-h-500px overflow-y-auto">
+    <div className={`${styles.formGrid}`}>
+      <div className="overflow-y-auto">
         <PasswordLoginForm />
         <EmailLoginForm />
         <p className="text-sm text-muted-foreground justify-self-start text-left mb-2">
@@ -22,6 +25,12 @@ function LoginForm({ toggleCreateAccount }: { toggleCreateAccount: Function }) {
       >
         New here? Create an account.
       </Button>
+      <Link
+        href="/"
+        className="text-center justify-self-center  text-sm font-medium underline border-t w-[228px] p-1"
+      >
+        Forgot password?
+      </Link>
     </div>
   );
 }

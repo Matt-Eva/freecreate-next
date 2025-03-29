@@ -5,10 +5,12 @@ import EmailCreateAccountForm from "./EmailCreateAccountForm";
 import OauthCreateAccountForm from "./OauthCreateAccountForm";
 import { Button } from "@/components/ui/button";
 
+import styles from "./CreateAccountForm.module.css";
+
 function CreateAccountForm({ toggleLogin }: { toggleLogin: Function }) {
   return (
-    <div>
-      <div className="h-[70vh] max-h-[450px] overflow-y-auto">
+    <div className={`${styles.formGrid}`}>
+      <div className="overflow-y-auto">
         <PasswordCreateAccountForm />
         <EmailCreateAccountForm />
         <p className="text-sm text-muted-foreground justify-self-start text-left mb-2">

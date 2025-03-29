@@ -13,6 +13,8 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 
+import styles from "./AuthDialog.module.css";
+
 function AuthDialog(props: React.PropsWithChildren) {
   const [login, setLogin] = useState(true);
 
@@ -32,8 +34,8 @@ function AuthDialog(props: React.PropsWithChildren) {
       >
         {props.children}
       </DialogTrigger>
-      <DialogContent className="h-[90vh] max-h-[600px]">
-        <DialogHeader>
+      <DialogContent className={`h-[90vh] max-h-[700px] ${styles.dialogGrid}`}>
+        <DialogHeader className="mb-0 ">
           <DialogTitle className="text-center underline">
             {login ? "Login" : "Create Account"}
           </DialogTitle>
