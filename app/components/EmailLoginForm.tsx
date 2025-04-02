@@ -16,6 +16,8 @@ import {
 import { Input } from "@/components/ui/input";
 
 function EmailLoginForm() {
+  const { emailLogin } = useAuth();
+
   const formSchema = z.object({
     email: z.string().min(2, {
       message: "email must be at least 2 characters.",
@@ -28,9 +30,14 @@ function EmailLoginForm() {
       email: "",
     },
   });
+
+  const login = (values: z.infer<typeof formSchema>) => {
+    emailLogin(values.email);
+  };
+
   return (
     <Form {...form}>
-      <form className="space-y-2 mb-8">
+      <form className="space-y-2 mb-8" onSubmit={form.handleSubmit(login)}>
         <FormDescription className="justify-self-start">
           Login with an email magic link.
         </FormDescription>

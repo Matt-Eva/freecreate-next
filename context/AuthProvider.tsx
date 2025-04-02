@@ -11,6 +11,7 @@ type User = {
 
 type AuthContextType = {
   user: User;
+  emailLogin: Function;
   googleLogin: Function;
   logout: Function;
   deleteUser: Function;
@@ -26,6 +27,7 @@ const initialContext: AuthContextType | null = {
     pending: true,
     present: false,
   },
+  emailLogin: () => {},
   googleLogin: () => {},
   logout: () => {},
   deleteUser: () => {},
@@ -66,6 +68,18 @@ export function AuthProvider(props: React.PropsWithChildren) {
     console.log("google login", data, error);
   };
 
+  const emailLogin = async (userEmail: string) => {
+    const domainURL = process.env.NEXT_PUBLIC_DOMAIN_URL;
+    const redirectURL = domainURL + "/profile";
+    const { data, error } = await supabase.auth.signInWithOtp({
+      email: userEmail,
+      options: {
+        emailRedirectTo: redirectURL,
+      },
+    });
+    console.log("email login", data, error);
+  };
+
   const logout = async () => {
     const { error } = await supabase.auth.signOut();
     if (error) {
@@ -89,7 +103,9 @@ export function AuthProvider(props: React.PropsWithChildren) {
   };
 
   return (
-    <AuthContext.Provider value={{ user, googleLogin, logout, deleteUser }}>
+    <AuthContext.Provider
+      value={{ user, emailLogin, googleLogin, logout, deleteUser }}
+    >
       {props.children}
     </AuthContext.Provider>
   );
