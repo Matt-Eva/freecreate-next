@@ -66,6 +66,12 @@ function Header() {
       >
         app
       </Link>
+      <Link
+        href="/blog"
+        className="underline text-sm sm:text-base ml-1 sm:ml-6 mt-0.5 sm:mt-1.5 "
+      >
+        blog
+      </Link>
       <FullScreenButton />
       <ProfileIcon />
     </header>

@@ -20,16 +20,12 @@ function EmailCreateAccountForm() {
     email: z.string().min(2, {
       message: "email must be at least 2 characters.",
     }),
-    username: z.string().min(2, {
-      message: "Username must be at least 2 characters",
-    }),
   });
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       email: "",
-      username: "",
     },
   });
 
@@ -57,18 +53,7 @@ function EmailCreateAccountForm() {
             </FormItem>
           )}
         />
-        <FormField
-          control={form.control}
-          name="username"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>username</FormLabel>
-              <FormControl>
-                <Input placeholder="username" {...field} className="text-sm" />
-              </FormControl>
-            </FormItem>
-          )}
-        />
+
         <Button className="block justify-self-center">
           Sign up with email
         </Button>

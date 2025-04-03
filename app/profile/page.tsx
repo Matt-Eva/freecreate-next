@@ -31,7 +31,7 @@ function Profile() {
           Authentication
         </h2>
         <h3 className="font-bolder text-lg font-bold w-[100%] mb-2">Logout</h3>
-        <Button onClick={() => logout()} className="mb-8">
+        <Button onClick={() => logout()} className="block mb-8">
           logout
         </Button>
         <ChangePassword />

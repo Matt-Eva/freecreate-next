@@ -47,11 +47,11 @@ function ChangePassword() {
   };
 
   return (
-    <div>
+    <div className="w-[100%]">
       <h3 className="text-lg font-bold mb-2">ChangePassword</h3>
       <Form {...form}>
         <form
-          className="space-y-2 space-x-2"
+          className="space-y-2 space-x-2 max-w-[500px]"
           onSubmit={form.handleSubmit(handleSubmit)}
         >
           <FormField
