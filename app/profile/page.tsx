@@ -25,15 +25,15 @@ function Profile() {
 
   return (
     <div className="px-2 w-[100%]">
-      <section className="flex flex-wrap">
-        <Button onClick={() => logout()} className="ml-auto">
-          logout
-        </Button>
-      </section>
-      <section className="flex flex-wrap ">
-        <h2 className="underline font-bold text-xl ml-auto w-[100%]">
+      <section className="flex flex-wrap"></section>
+      <section className="flex flex-wrap mb-8">
+        <h2 className="font-bold text-2xl ml-auto w-[100%] border-b mb-2">
           Authentication
         </h2>
+        <h3 className="font-bolder text-lg font-bold w-[100%] mb-2">Logout</h3>
+        <Button onClick={() => logout()} className="mb-8">
+          logout
+        </Button>
         <ChangePassword />
       </section>
       <section className="flex flex-wrap">

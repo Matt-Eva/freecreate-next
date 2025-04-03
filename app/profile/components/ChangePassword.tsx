@@ -48,30 +48,36 @@ function ChangePassword() {
 
   return (
     <div>
-      <h3>ChangePassword</h3>
+      <h3 className="text-lg font-bold mb-2">ChangePassword</h3>
       <Form {...form}>
-        <form className="space-y-2" onSubmit={form.handleSubmit(handleSubmit)}>
+        <form
+          className="space-y-2 space-x-2"
+          onSubmit={form.handleSubmit(handleSubmit)}
+        >
           <FormField
             control={form.control}
             name="password"
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Enter new password</FormLabel>
-                <FormControl>
-                  <Input
-                    placeholder="new password"
-                    type={showPassword ? "text" : "password"}
-                    {...field}
-                  />
-                </FormControl>
-                <Button
-                  onClick={() => {
-                    setShowPassword(!showPassword);
-                  }}
-                  type="button"
-                >
-                  {showPassword ? <EyeClosedIcon /> : <EyeOpenIcon />}
-                </Button>
+                <div className="flex">
+                  <FormControl>
+                    <Input
+                      placeholder="new password"
+                      type={showPassword ? "text" : "password"}
+                      {...field}
+                    />
+                  </FormControl>
+                  <Button
+                    onClick={() => {
+                      setShowPassword(!showPassword);
+                    }}
+                    type="button"
+                    className="ml-1 h-[80%] self-center rounded-xl"
+                  >
+                    {showPassword ? <EyeClosedIcon /> : <EyeOpenIcon />}
+                  </Button>
+                </div>
               </FormItem>
             )}
           />
@@ -81,25 +87,28 @@ function ChangePassword() {
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Confirm new password</FormLabel>
-                <FormControl>
-                  <Input
-                    placeholder="confirm password"
-                    type={showPasswordConfirmation ? "text" : "password"}
-                    {...field}
-                  />
-                </FormControl>
-                <Button
-                  onClick={() => {
-                    setShowPasswordConfirmation(!showPasswordConfirmation);
-                  }}
-                  type="button"
-                >
-                  {showPasswordConfirmation ? (
-                    <EyeClosedIcon />
-                  ) : (
-                    <EyeOpenIcon />
-                  )}
-                </Button>
+                <div className="flex">
+                  <FormControl>
+                    <Input
+                      placeholder="confirm password"
+                      type={showPasswordConfirmation ? "text" : "password"}
+                      {...field}
+                    />
+                  </FormControl>
+                  <Button
+                    onClick={() => {
+                      setShowPasswordConfirmation(!showPasswordConfirmation);
+                    }}
+                    type="button"
+                    className="ml-1 h-[80%] self-center rounded-xl"
+                  >
+                    {showPasswordConfirmation ? (
+                      <EyeClosedIcon />
+                    ) : (
+                      <EyeOpenIcon />
+                    )}
+                  </Button>
+                </div>
                 <FormMessage />
               </FormItem>
             )}
