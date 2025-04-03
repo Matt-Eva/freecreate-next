@@ -5,8 +5,8 @@ import { useRouter } from "next/navigation";
 
 import { useAuth } from "@/context/AuthProvider";
 
+import ChangePassword from "./components/ChangePassword";
 import { Button } from "@/components/ui/button";
-import { Label } from "@/components/ui/label";
 
 function Profile() {
   const { user, logout, deleteUser } = useAuth();
@@ -31,18 +31,17 @@ function Profile() {
         </Button>
       </section>
       <section className="flex flex-wrap ">
-        <h2 className="underline font-bold text-xl ml-auto">Authentication</h2>
+        <h2 className="underline font-bold text-xl ml-auto w-[100%]">
+          Authentication
+        </h2>
+        <ChangePassword />
       </section>
       <section className="flex flex-wrap">
-        <h2 className="underline w-[100%] font-bold ml-auto text-xl text-right text-red-600">
+        <h2 className="underline w-[100%] font-bold ml-auto text-xl text-red-600">
           Delete Account
         </h2>
 
-        <Button
-          onClick={() => deleteUser()}
-          id="delete"
-          className="block bg-white border border-red-600 text-red-600 hover:bg-gray-200"
-        >
+        <Button onClick={() => deleteUser()} id="delete" variant="destructive">
           delete account
         </Button>
         <p>
