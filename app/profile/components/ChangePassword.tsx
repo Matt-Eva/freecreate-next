@@ -4,6 +4,7 @@ import { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+import { createClient } from "@/utils/supabase/client";
 
 import {
   Form,
@@ -24,10 +25,12 @@ function ChangePassword() {
   const [showPasswordConfirmation, setShowPasswordConfirmation] =
     useState(false);
 
+  const supabase = createClient();
+
   const formSchema = z
     .object({
-      password: z.string(),
-      passwordConfirmation: z.string(),
+      password: z.string().min(6, { message: "required" }),
+      passwordConfirmation: z.string().min(6),
     })
     .refine((data) => data.password === data.passwordConfirmation, {
       message: "passwords do not match",
@@ -42,8 +45,21 @@ function ChangePassword() {
     },
   });
 
-  const handleSubmit = (values: z.infer<typeof formSchema>) => {
+  const handleSubmit = async (values: z.infer<typeof formSchema>) => {
     console.log(values);
+    const newPassword = values.password;
+    const { data, error } = await supabase.auth.updateUser({
+      password: newPassword,
+    });
+
+    if (error) {
+      console.error(error);
+    } else {
+      console.log(data);
+      alert("password successfully updated!");
+    }
+
+    form.reset();
   };
 
   return (
