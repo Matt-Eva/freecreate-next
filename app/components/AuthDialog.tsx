@@ -17,6 +17,7 @@ import styles from "./AuthDialog.module.css";
 
 function AuthDialog(props: React.PropsWithChildren) {
   const [login, setLogin] = useState(true);
+  const [open, setOpen] = useState(false);
 
   const toggleLogin = () => {
     setLogin(true);
@@ -26,8 +27,12 @@ function AuthDialog(props: React.PropsWithChildren) {
     setLogin(false);
   };
 
+  const closeDialog = () => {
+    setOpen(false);
+  };
+
   return (
-    <Dialog>
+    <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger
         asChild
         className="justify-self-end sm:text-base ml-auto mr-1 mt-0.5 sm:mr-2 sm:mt-1.5 hover:cursor-pointer"
@@ -47,7 +52,10 @@ function AuthDialog(props: React.PropsWithChildren) {
         </DialogHeader>
 
         {login ? (
-          <LoginForm toggleCreateAccount={toggleCreateAccount} />
+          <LoginForm
+            toggleCreateAccount={toggleCreateAccount}
+            closeDialog={closeDialog}
+          />
         ) : (
           <CreateAccountForm toggleLogin={toggleLogin} />
         )}

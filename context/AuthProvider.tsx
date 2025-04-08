@@ -11,6 +11,7 @@ type User = {
 
 type AuthContextType = {
   user: User;
+  passwordLogin: Function;
   emailLogin: Function;
   googleLogin: Function;
   logout: Function;
@@ -27,6 +28,7 @@ const initialContext: AuthContextType | null = {
     pending: true,
     present: false,
   },
+  passwordLogin: () => {},
   emailLogin: () => {},
   googleLogin: () => {},
   logout: () => {},
@@ -90,6 +92,19 @@ export function AuthProvider(props: React.PropsWithChildren) {
     }
   };
 
+  const passwordLogin = async (email: string, password: string) => {
+    const { data, error } = await supabase.auth.signInWithPassword({
+      email: email,
+      password: password,
+    });
+
+    if (error) {
+      return error;
+    } else {
+      setUser({ pending: false, present: true });
+    }
+  };
+
   const deleteUser = async () => {
     const res = await fetch("/api/delete-user", { method: "DELETE" });
     if (res.ok) {
@@ -104,7 +119,14 @@ export function AuthProvider(props: React.PropsWithChildren) {
 
   return (
     <AuthContext.Provider
-      value={{ user, emailLogin, googleLogin, logout, deleteUser }}
+      value={{
+        user,
+        passwordLogin,
+        emailLogin,
+        googleLogin,
+        logout,
+        deleteUser,
+      }}
     >
       {props.children}
     </AuthContext.Provider>

@@ -8,11 +8,17 @@ import { Button } from "@/components/ui/button";
 
 import styles from "./LoginForm.module.css";
 
-function LoginForm({ toggleCreateAccount }: { toggleCreateAccount: Function }) {
+function LoginForm({
+  toggleCreateAccount,
+  closeDialog,
+}: {
+  toggleCreateAccount: Function;
+  closeDialog: Function;
+}) {
   return (
     <div className={`${styles.formGrid}`}>
       <div className="overflow-y-auto">
-        <PasswordLoginForm />
+        <PasswordLoginForm closeDialog={closeDialog} />
         <EmailLoginForm />
         <p className="text-sm text-muted-foreground justify-self-start text-left mb-2">
           Login with a social account.

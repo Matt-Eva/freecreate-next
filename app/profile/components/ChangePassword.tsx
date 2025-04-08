@@ -94,6 +94,7 @@ function ChangePassword() {
                     {showPassword ? <EyeClosedIcon /> : <EyeOpenIcon />}
                   </Button>
                 </div>
+                <FormMessage />
               </FormItem>
             )}
           />
