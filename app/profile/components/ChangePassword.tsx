@@ -80,6 +80,7 @@ function ChangePassword() {
                   <FormControl>
                     <Input
                       placeholder="new password"
+                      autoComplete="new-password"
                       type={showPassword ? "text" : "password"}
                       {...field}
                     />
@@ -108,6 +109,7 @@ function ChangePassword() {
                   <FormControl>
                     <Input
                       placeholder="confirm password"
+                      autoComplete="new-password"
                       type={showPasswordConfirmation ? "text" : "password"}
                       {...field}
                     />

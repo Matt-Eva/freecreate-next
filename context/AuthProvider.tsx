@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 type User = {
   pending: boolean;
   present: boolean;
+  userMetadata: object;
 };
 
 type AuthContextType = {
@@ -16,23 +17,27 @@ type AuthContextType = {
   googleLogin: Function;
   logout: Function;
   deleteUser: Function;
+  updateUsername: Function;
 };
 
 const initialUser = {
   pending: true,
   present: false,
+  userMetadata: {},
 };
 
 const initialContext: AuthContextType | null = {
   user: {
     pending: true,
     present: false,
+    userMetadata: {},
   },
   passwordLogin: () => {},
   emailLogin: () => {},
   googleLogin: () => {},
   logout: () => {},
   deleteUser: () => {},
+  updateUsername: () => {},
 };
 
 const AuthContext = createContext<AuthContextType>(initialContext);
@@ -49,11 +54,13 @@ export function AuthProvider(props: React.PropsWithChildren) {
       const { data, error } = await supabase.auth.getUser();
       if (data.user) {
         console.log("auth provider", data.user);
-        setUser({ pending: false, present: true });
+        const userMetadata = data.user.user_metadata;
+        console.log(userMetadata);
+        setUser({ pending: false, present: true, userMetadata: userMetadata });
       }
       if (error) {
         console.log("auth provider error", error);
-        setUser({ present: false, pending: false });
+        setUser({ ...user, present: false, pending: false });
       }
     };
     getUser();
@@ -101,7 +108,7 @@ export function AuthProvider(props: React.PropsWithChildren) {
     if (error) {
       return error;
     } else {
-      setUser({ pending: false, present: true });
+      setUser({ ...user, pending: false, present: true });
     }
   };
 
@@ -117,6 +124,19 @@ export function AuthProvider(props: React.PropsWithChildren) {
     }
   };
 
+  const updateUsername = async (username: string) => {
+    const { data, error } = await supabase.auth.updateUser({
+      data: {
+        username: username,
+      },
+    });
+    if (error) {
+      return error;
+    } else {
+      setUser({ ...user, userMetadata: data.user.user_metadata });
+    }
+  };
+
   return (
     <AuthContext.Provider
       value={{
@@ -126,6 +146,7 @@ export function AuthProvider(props: React.PropsWithChildren) {
         googleLogin,
         logout,
         deleteUser,
+        updateUsername,
       }}
     >
       {props.children}

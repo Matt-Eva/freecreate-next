@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { useAuth } from "@/context/AuthProvider";
 
 import ChangePassword from "./components/ChangePassword";
+import UsernameForm from "./components/UsernameForm";
 import { Button } from "@/components/ui/button";
 
 function Profile() {
@@ -13,6 +14,12 @@ function Profile() {
 
   const router = useRouter();
 
+  console.log(user);
+
+  let username = "";
+  if ("username" in user.userMetadata) {
+    username = user.userMetadata.username as string;
+  }
   useEffect(() => {
     if (!user.pending && !user.present) {
       router.push("/login");
@@ -25,7 +32,15 @@ function Profile() {
 
   return (
     <div className="px-2 w-[100%]">
-      <section className="flex flex-wrap"></section>
+      <section className="flex flex-wrap mb-8">
+        <h2 className="font-bold text-2xl ml-auto w-[100%] border-b mb-2">
+          Username
+        </h2>
+        <h3 className="font-bold text-xl w-[100%]">
+          {username ? `Hi, ${username}!` : "You haven't added a username yet"}
+        </h3>
+        <UsernameForm />
+      </section>
       <section className="flex flex-wrap mb-8">
         <h2 className="font-bold text-2xl ml-auto w-[100%] border-b mb-2">
           Authentication

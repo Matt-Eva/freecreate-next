@@ -19,9 +19,6 @@ function PasswordCreateAccountForm() {
     email: z.string().min(2, {
       message: "email must be at least 2 characters.",
     }),
-    username: z.string().min(2, {
-      message: "Username must be at least 2 characters",
-    }),
     password: z.string().min(8, {
       message: "Password must be at least 8 characters",
     }),
@@ -59,18 +56,6 @@ function PasswordCreateAccountForm() {
               <FormLabel>email</FormLabel>
               <FormControl>
                 <Input placeholder="email" {...field} className="text-sm" />
-              </FormControl>
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="username"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>username</FormLabel>
-              <FormControl>
-                <Input placeholder="username" {...field} className="text-sm" />
               </FormControl>
             </FormItem>
           )}
