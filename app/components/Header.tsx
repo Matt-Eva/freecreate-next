@@ -50,25 +50,25 @@ function Header() {
       <Link
         href="/about"
         id="about"
-        className="underline text-sm sm:text-base ml-1 sm:ml-6 mt-0.5 sm:mt-1.5   transition ease-in-out duration-500 hover:text-black"
+        className="underline text-sm sm:text-base ml-2 sm:ml-6 mt-0.5 sm:mt-1.5   transition ease-in-out duration-500 hover:text-black"
       >
         about
       </Link>
       <Link
         href="/donate"
-        className="underline  text-sm sm:text-base ml-1 sm:ml-6 mt-0.5 sm:mt-1.5   transition ease-in-out duration-500 hover:text-black"
+        className="underline  text-sm sm:text-base ml-2 sm:ml-6 mt-0.5 sm:mt-1.5   transition ease-in-out duration-500 hover:text-black"
       >
         donate
       </Link>
       <Link
         href="/app"
-        className="underline  text-sm sm:text-base ml-1 sm:ml-6 mt-0.5 sm:mt-1.5   transition ease-in-out duration-500 hover:text-black"
+        className="underline  text-sm sm:text-base ml-2 sm:ml-6 mt-0.5 sm:mt-1.5   transition ease-in-out duration-500 hover:text-black"
       >
         app
       </Link>
       <Link
         href="/blog"
-        className="underline text-sm sm:text-base ml-1 sm:ml-6 mt-0.5 sm:mt-1.5 "
+        className="underline hidden sm:block text-sm sm:text-base  sm:ml-6 mt-0.5 sm:mt-1.5 "
       >
         blog
       </Link>

@@ -65,10 +65,19 @@ function Profile() {
           Creator Profiles
         </h2>
         <Button onClick={() => setShowAddCreatoForm(!showAddCreatorForm)}>
-          Add Creator Profile
+          {showAddCreatorForm ? "Hide Form" : "Add Creator Profile"}
         </Button>
         <div className="w-[100%] mt-2">
           {showAddCreatorForm ? <AddCreatorForm /> : null}
+        </div>
+        <div>
+          {user.creators.map((creator) => {
+            return (
+              <div>
+                <h3>{creator.name}</h3>
+              </div>
+            );
+          })}
         </div>
       </section>
       <section className="flex flex-wrap mb-8">

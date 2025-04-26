@@ -15,6 +15,7 @@ const initialCreators: Creator[] = [];
 type User = {
   pending: boolean;
   present: boolean;
+  id: string;
   userMetadata: object;
   creators: Array<Creator> | [];
 };
@@ -27,11 +28,13 @@ type AuthContextType = {
   logout: Function;
   deleteUser: Function;
   updateUsername: Function;
+  addCreator: Function;
 };
 
 const initialUser = {
   pending: true,
   present: false,
+  id: "",
   userMetadata: {},
   creators: initialCreators,
 };
@@ -40,6 +43,7 @@ const initialContext: AuthContextType | null = {
   user: {
     pending: true,
     present: false,
+    id: "",
     userMetadata: {},
     creators: initialCreators,
   },
@@ -49,6 +53,7 @@ const initialContext: AuthContextType | null = {
   logout: () => {},
   deleteUser: () => {},
   updateUsername: () => {},
+  addCreator: () => {},
 };
 
 const AuthContext = createContext<AuthContextType>(initialContext);
@@ -74,6 +79,7 @@ export function AuthProvider(props: React.PropsWithChildren) {
         setUser({
           pending: false,
           present: true,
+          id: data.user.id,
           userMetadata: userMetadata,
           creators: creatorData,
         });
@@ -158,14 +164,19 @@ export function AuthProvider(props: React.PropsWithChildren) {
   };
 
   const addCreator = async (creatorName: string) => {
+    const newCreator = { name: creatorName, user_id: user.id };
+    console.log(newCreator);
     const { data, error } = await supabase
       .from("creators")
-      .insert({ name: creatorName })
-      .select();
+      .insert({ name: creatorName, user_id: user.id })
+      .select("id, name, uuid");
     if (error) {
       console.error(error);
     } else {
       console.log(data);
+      const creators = user.creators;
+
+      setUser({ ...user, creators: [...creators, data[0]] });
     }
   };
 
@@ -179,6 +190,7 @@ export function AuthProvider(props: React.PropsWithChildren) {
         logout,
         deleteUser,
         updateUsername,
+        addCreator,
       }}
     >
       {props.children}
