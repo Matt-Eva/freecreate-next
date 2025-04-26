@@ -28,7 +28,7 @@ function UsernameForm() {
     }
   };
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="mt-4">
       <input
         type="text"
         placeholder="add or update username"

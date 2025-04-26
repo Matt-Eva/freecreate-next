@@ -1,28 +1,39 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import { createClient } from "@/utils/supabase/client";
 
 import { useAuth } from "@/context/AuthProvider";
 
 import ChangePassword from "./components/ChangePassword";
 import UsernameForm from "./components/UsernameForm";
+import AddCreatorForm from "./components/AddCreatorForm";
 import { Button } from "@/components/ui/button";
+
+import { Pencil1Icon } from "@radix-ui/react-icons";
+import { create } from "domain";
 
 function Profile() {
   const { user, logout, deleteUser } = useAuth();
+  const [showUsernameForm, setShowUsernameForm] = useState(false);
+  const [showAddCreatorForm, setShowAddCreatoForm] = useState(false);
 
   const router = useRouter();
+  const supabase = createClient();
 
   console.log(user);
 
   let username = "";
   if ("username" in user.userMetadata) {
     username = user.userMetadata.username as string;
+  } else if ("name" in user.userMetadata) {
+    username = user.userMetadata.name as string;
   }
   useEffect(() => {
     if (!user.pending && !user.present) {
       router.push("/login");
+    } else if (user.present) {
     }
   }, [user]);
 
@@ -33,13 +44,32 @@ function Profile() {
   return (
     <div className="px-2 w-[100%]">
       <section className="flex flex-wrap mb-8">
+        <div className="w-[100%] flex">
+          <h2 className="font-bold text-2xl mr-2">
+            {username
+              ? `Welcome, ${username}!`
+              : "You haven't added a username yet"}
+          </h2>
+          <Button
+            onClick={() => setShowUsernameForm(!showUsernameForm)}
+            className="bg-white text-black border-none shadow-none hover:bg-white hover:cursor-pointer  h-7 w-5"
+          >
+            <Pencil1Icon className="" />
+          </Button>
+        </div>
+
+        {showUsernameForm ? <UsernameForm /> : null}
+      </section>
+      <section className="flex flex-wrap mb-8">
         <h2 className="font-bold text-2xl ml-auto w-[100%] border-b mb-2">
-          Username
+          Creator Profiles
         </h2>
-        <h3 className="font-bold text-xl w-[100%]">
-          {username ? `Hi, ${username}!` : "You haven't added a username yet"}
-        </h3>
-        <UsernameForm />
+        <Button onClick={() => setShowAddCreatoForm(!showAddCreatorForm)}>
+          Add Creator Profile
+        </Button>
+        <div className="w-[100%] mt-2">
+          {showAddCreatorForm ? <AddCreatorForm /> : null}
+        </div>
       </section>
       <section className="flex flex-wrap mb-8">
         <h2 className="font-bold text-2xl ml-auto w-[100%] border-b mb-2">

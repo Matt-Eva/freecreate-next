@@ -4,10 +4,19 @@ import { createContext, useContext, useEffect, useState } from "react";
 import { createClient } from "@/utils/supabase/client";
 import { useRouter } from "next/navigation";
 
+type Creator = {
+  name: string;
+  uuid: string;
+  id: string;
+};
+
+const initialCreators: Creator[] = [];
+
 type User = {
   pending: boolean;
   present: boolean;
   userMetadata: object;
+  creators: Array<Creator> | [];
 };
 
 type AuthContextType = {
@@ -24,6 +33,7 @@ const initialUser = {
   pending: true,
   present: false,
   userMetadata: {},
+  creators: initialCreators,
 };
 
 const initialContext: AuthContextType | null = {
@@ -31,6 +41,7 @@ const initialContext: AuthContextType | null = {
     pending: true,
     present: false,
     userMetadata: {},
+    creators: initialCreators,
   },
   passwordLogin: () => {},
   emailLogin: () => {},
@@ -53,13 +64,22 @@ export function AuthProvider(props: React.PropsWithChildren) {
     const getUser = async () => {
       const { data, error } = await supabase.auth.getUser();
       if (data.user) {
-        console.log("auth provider", data.user);
         const userMetadata = data.user.user_metadata;
-        console.log(userMetadata);
-        setUser({ pending: false, present: true, userMetadata: userMetadata });
+        const creators = await supabase
+          .from("creators")
+          .select("name, uuid, id")
+          .eq("user_id", data.user.id);
+        console.log("creators", creators);
+        const creatorData: Array<Creator> = creators.data!;
+        setUser({
+          pending: false,
+          present: true,
+          userMetadata: userMetadata,
+          creators: creatorData,
+        });
       }
       if (error) {
-        console.log("auth provider error", error);
+        console.error("auth provider error", error);
         setUser({ ...user, present: false, pending: false });
       }
     };
@@ -134,6 +154,18 @@ export function AuthProvider(props: React.PropsWithChildren) {
       return error;
     } else {
       setUser({ ...user, userMetadata: data.user.user_metadata });
+    }
+  };
+
+  const addCreator = async (creatorName: string) => {
+    const { data, error } = await supabase
+      .from("creators")
+      .insert({ name: creatorName })
+      .select();
+    if (error) {
+      console.error(error);
+    } else {
+      console.log(data);
     }
   };
 
