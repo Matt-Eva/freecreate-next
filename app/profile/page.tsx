@@ -10,7 +10,7 @@ import ChangePassword from "./components/ChangePassword";
 import UsernameForm from "./components/UsernameForm";
 import AddCreatorForm from "./components/AddCreatorForm";
 
-import { Pencil1Icon } from "@radix-ui/react-icons";
+import Pencil1 from "../../icons/Pencil1";
 
 function Profile() {
   const { user, logout, deleteUser } = useAuth();
@@ -52,7 +52,7 @@ function Profile() {
             onClick={() => setShowUsernameForm(!showUsernameForm)}
             className="bg-white text-black border-none shadow-none hover:bg-white hover:cursor-pointer  h-7 w-5"
           >
-            <Pencil1Icon className="" />
+            <Pencil1 />
           </button>
         </div>
 
