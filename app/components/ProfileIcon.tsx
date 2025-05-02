@@ -24,9 +24,7 @@ function ProfileIcon() {
             className="hover:text-black transition ease-in-out duration-500"
             strokeWidth={1.5}
           /> */}
-          <button className="mr-1 px-2 w-fit h-[70%] font-light underline">
-            login
-          </button>
+          <button className="">login</button>
         </AuthDialog>
       )}
     </>

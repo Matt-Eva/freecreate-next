@@ -85,7 +85,6 @@ export function AuthProvider(props: React.PropsWithChildren) {
         });
       }
       if (error) {
-        console.error("auth provider error", error);
         setUser({ ...user, present: false, pending: false });
       }
     };
