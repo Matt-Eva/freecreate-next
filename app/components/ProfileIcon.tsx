@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useAuth } from "@/context/AuthProvider";
 
 import AuthDialog from "./AuthDialog";
-import { Button } from "@/components/ui/button";
+
 import { PersonIcon } from "@radix-ui/react-icons";
 
 function ProfileIcon() {
@@ -24,9 +24,9 @@ function ProfileIcon() {
             className="hover:text-black transition ease-in-out duration-500"
             strokeWidth={1.5}
           /> */}
-          <Button className="mr-1 px-2 w-fit h-[70%] font-light underline">
+          <button className="mr-1 px-2 w-fit h-[70%] font-light underline">
             login
-          </Button>
+          </button>
         </AuthDialog>
       )}
     </>

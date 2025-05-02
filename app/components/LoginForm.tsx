@@ -4,7 +4,6 @@ import Link from "next/link";
 import OauthLoginForm from "./OauthLoginForm";
 import PasswordLoginForm from "./PasswordLoginForm";
 import EmailLoginForm from "./EmailLoginForm";
-import { Button } from "@/components/ui/button";
 
 import styles from "./LoginForm.module.css";
 
@@ -25,12 +24,12 @@ function LoginForm({
         </p>
         <OauthLoginForm />
       </div>
-      <Button
+      <button
         className="block justify-self-center bg-white text-black underline hover:bg-white hover:cursor-pointer shadow-none mt-3 border-t rounded-none"
         onClick={() => toggleCreateAccount()}
       >
         New here? Create an account.
-      </Button>
+      </button>
       <Link
         href="/"
         className="text-center justify-self-center  text-sm font-medium underline border-t w-[228px] p-1"

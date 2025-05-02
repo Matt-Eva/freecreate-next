@@ -3,8 +3,6 @@
 import PasswordCreateAccountForm from "./PasswordCreateAccountForm";
 import EmailCreateAccountForm from "./EmailCreateAccountForm";
 import OauthCreateAccountForm from "./OauthCreateAccountForm";
-import { Button } from "@/components/ui/button";
-
 import styles from "./CreateAccountForm.module.css";
 
 function CreateAccountForm({ toggleLogin }: { toggleLogin: Function }) {
@@ -18,12 +16,12 @@ function CreateAccountForm({ toggleLogin }: { toggleLogin: Function }) {
         </p>
         <OauthCreateAccountForm />
       </div>
-      <Button
+      <button
         className="justify-self-center block bg-white text-black underline hover:bg-white hover:cursor-pointer shadow-none mt-4 border-t rounded-none"
         onClick={() => toggleLogin()}
       >
         Already have an account? Login.
-      </Button>
+      </button>
     </div>
   );
 }

@@ -9,7 +9,6 @@ import { useAuth } from "@/context/AuthProvider";
 import ChangePassword from "./components/ChangePassword";
 import UsernameForm from "./components/UsernameForm";
 import AddCreatorForm from "./components/AddCreatorForm";
-import { Button } from "@/components/ui/button";
 
 import { Pencil1Icon } from "@radix-ui/react-icons";
 
@@ -49,12 +48,12 @@ function Profile() {
               ? `Welcome, ${username}!`
               : "You haven't added a username yet"}
           </h2>
-          <Button
+          <button
             onClick={() => setShowUsernameForm(!showUsernameForm)}
             className="bg-white text-black border-none shadow-none hover:bg-white hover:cursor-pointer  h-7 w-5"
           >
             <Pencil1Icon className="" />
-          </Button>
+          </button>
         </div>
 
         {showUsernameForm ? <UsernameForm /> : null}
@@ -63,9 +62,9 @@ function Profile() {
         <h2 className="font-bold text-2xl ml-auto w-[100%] border-b mb-2">
           Creator Profiles
         </h2>
-        <Button onClick={() => setShowAddCreatoForm(!showAddCreatorForm)}>
+        <button onClick={() => setShowAddCreatoForm(!showAddCreatorForm)}>
           {showAddCreatorForm ? "Hide Form" : "Add Creator Profile"}
-        </Button>
+        </button>
         <div className="w-[100%] mt-2">
           {showAddCreatorForm ? <AddCreatorForm /> : null}
         </div>
@@ -84,9 +83,9 @@ function Profile() {
           Authentication
         </h2>
         <h3 className="font-bolder text-lg font-bold w-[100%] mb-2">Logout</h3>
-        <Button onClick={() => logout()} className="block mb-8">
+        <button onClick={() => logout()} className="block mb-8">
           logout
-        </Button>
+        </button>
         <ChangePassword />
       </section>
       <section className="flex flex-wrap">
@@ -94,9 +93,9 @@ function Profile() {
           Delete Account
         </h2>
 
-        <Button onClick={() => deleteUser()} id="delete" variant="destructive">
+        <button onClick={() => deleteUser()} id="delete">
           delete account
-        </Button>
+        </button>
         <p>
           Deleting your account will remove all your data from FreeCreate,
           including your entire user profile and all of your likes, libraries
