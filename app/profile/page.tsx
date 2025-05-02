@@ -12,7 +12,6 @@ import AddCreatorForm from "./components/AddCreatorForm";
 import { Button } from "@/components/ui/button";
 
 import { Pencil1Icon } from "@radix-ui/react-icons";
-import { create } from "domain";
 
 function Profile() {
   const { user, logout, deleteUser } = useAuth();
